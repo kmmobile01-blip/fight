@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>定年延長影響額試算システム</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'media', // Use system settings
+            theme: {
+                extend: {
+                    colors: {
+                        gray: {
+                            900: '#111827',
+                            950: '#030712',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Russo+One&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+        
+        /* Dark mode scrollbar */
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #030712; color: #f3f4f6; }
+            ::-webkit-scrollbar-track { background: #1f2937; }
+            ::-webkit-scrollbar-thumb { background: #4b5563; }
+            ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+        }
+
+        .kb-gradient { background: linear-gradient(135deg, #450a0a 0%, #7f1d1d 50%, #b91c1c 100%); }
+        
+        /* Enhanced Print Styles */
+        @media print {
+            body { 
+                -webkit-print-color-adjust: exact !important; 
+                print-color-adjust: exact !important;
+                background-color: white !important;
+                color: black !important;
+                overflow: visible !important;
+            }
+            
+            /* Hide UI Elements */
+            aside, header, button, .print\:hidden, nav, .fixed, .sticky, input[type="checkbox"] {
+                display: none !important;
+            }
+            
+            /* Layout Resets for Print */
+            #root, .flex-col, .flex-row, main {
+                display: block !important;
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                position: static !important;
+            }
+            
+            /* Specific Report Content Fixes */
+            .print\:p-0 {
+                padding: 0 !important;
+            }
+            .print\:shadow-none {
+                box-shadow: none !important;
+            }
+            .print\:w-full {
+                width: 100% !important;
+            }
+            .print\:min-h-0 {
+                min-height: 0 !important;
+            }
+            .print\:bg-white {
+                background-color: white !important;
+            }
+            .print\:overflow-visible {
+                overflow: visible !important;
+            }
+            .print\:h-auto {
+                height: auto !important;
+            }
+            .print\:text-black {
+                color: black !important;
+            }
+
+            @page {
+                size: A4;
+                margin: 1.5cm;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "@google/genai": "https://esm.sh/@google/genai"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
